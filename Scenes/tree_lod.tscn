@@ -17,6 +17,6 @@ cap_bottom = false
 transform = Transform3D(0.72, 0, 0, 0, 0.8, 0, 0, 0, 0.72, 0, 0, 0)
 
 [node name="MeshInstance3D3" type="MeshInstance3D" parent="."]
-transform = Transform3D(0, 0, 2.6, 0, 1, 0, -2.6, 0, 0, -0.0555555, 16, 0)
+transform = Transform3D(0, 0, 1.43, 0, 0.55, 0, -1.43, 0, 0, 1.4275, 16, 1.40728)
 material_override = SubResource("StandardMaterial3D_wd3o1")
 mesh = SubResource("CylinderMesh_ip1qd")

@@ -34,13 +34,13 @@ script = ExtResource("1_4pna1")
 transform = Transform3D(1, 0, 0, 0, 0.99923, -0.0392395, 0, 0.0392395, 0.99923, 0, 0, 0)
 
 [node name="MeshInstance3D3" type="MeshInstance3D" parent="Node3D"]
-transform = Transform3D(0.507, 0, 0.87815, 3.72529e-09, 0.78, 1.86265e-09, -0.87815, 0, 0.507, -0.577, 4.8, -0.29)
+transform = Transform3D(0.000337839, 0.0153034, 1.01381, -0.00533423, 0.779839, -0.0198924, -1.01399, -0.00409738, 0.00044301, 0.492943, 4.84373, 0.823595)
 material_override = SubResource("StandardMaterial3D_pse4q")
 mesh = SubResource("CylinderMesh_tlhha")
 skeleton = NodePath("../..")
 
 [node name="MeshInstance3D5" type="MeshInstance3D" parent="Node3D"]
-transform = Transform3D(0, 0, 1.014, -1.11759e-08, 0.78, 0, -1.014, 0, 0, 0.411, 3, 0.568)
+transform = Transform3D(-0.50661, 0.0153034, 0.87815, 0.00532657, 0.779839, -0.0198944, -0.87836, -0.00409737, -0.50661, 1.74193, 3.02021, 1.08266)
 material_override = SubResource("StandardMaterial3D_pse4q")
 mesh = SubResource("CylinderMesh_qopu7")
 skeleton = NodePath("../..")

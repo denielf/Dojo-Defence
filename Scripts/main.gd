@@ -7,6 +7,8 @@ const GRASS = preload("res://Scenes/grass.tscn")
 const MOSS = preload("res://Scenes/moss.tscn")
 const DIRT = preload("res://Scenes/dirt.tscn")
 
+@onready var mesh_instance_3d_2 = $MeshInstance3D2
+
 @onready var lod = $lod
 @onready var trees = $trees
 @onready var roads = $roads
@@ -28,11 +30,11 @@ func _ready():
 	generate_ground()
 
 func _process(_delta):
-	if cam_rig.zoomTgt > 140:
+	if cam_rig.zoomTgt > 160:
 		light.shadow_enabled = false
 	else:
 		light.shadow_enabled = true
-	if cam_rig.zoomTgt > 180:
+	if cam_rig.zoomTgt > 160:
 		lod.set_visible(true)
 		trees.set_visible(false)
 	else:
@@ -44,21 +46,20 @@ func _input(event):
 		if event.is_action_pressed("reload"):
 			get_tree().reload_current_scene()
 
-#func generate_ground():
-	#groundMesh.get_surface_override_material(0).set("albedo_texture", GROUND)
-	#var texture = NoiseTexture2D.new()
-	#texture.noise = FastNoiseLite.new()
-	#texture.color_ramp = Gradient.new()
-	#texture.color_ramp.set_color(0, Color("#6d6f26", 255))
-	#texture.color_ramp.set_color(1, Color("#69601f", 255))
-	#texture.noise.set("noise_type", "Perlin")
-	#texture.noise.set("seed", randi())
-	#texture.noise.set("frequency", 0.01)
-	#texture.height = 2048
-	#texture.width = 4096
-	#await texture.changed
-
 func generate_ground():
+	var texture = NoiseTexture2D.new()
+	texture.noise = FastNoiseLite.new()
+	texture.color_ramp = Gradient.new()
+	texture.color_ramp.set_color(0, Color.WHITE)
+	texture.color_ramp.set_color(1, Color.GRAY)
+	texture.noise.set("noise_type", "Perlin")
+	texture.noise.set("seed", randi())
+	texture.noise.set("frequency", 0.5)
+	texture.height = 96
+	texture.width = 192
+	await texture.changed
+	mesh_instance_3d_2.get_surface_override_material(0).set("albedo_texture", texture)
+	
 	init_tiles()
 	spawn_moss_tile(2720)
 	grow_moss_tiles()

@@ -20,7 +20,7 @@ script = ExtResource("1_pwbaj")
 transform = Transform3D(0.999887, -0.0150376, 0, 0.0150376, 0.999887, 0, 0, 0, 1, 0, 0, 0)
 
 [node name="MeshInstance3D3" type="MeshInstance3D" parent="Node3D"]
-transform = Transform3D(0.6084, 0, 1.05378, 0, 0.936, 0, -1.05378, 0, 0.6084, -0.522, 5.5, -0.286)
+transform = Transform3D(0.6084, 0, 1.05378, 1.86265e-09, 0.936, 0, -1.05378, 0, 0.6084, 1.23521, 5.47357, 1.07306)
 material_override = SubResource("StandardMaterial3D_pse4q")
 mesh = SubResource("CylinderMesh_tlhha")
 skeleton = NodePath("../..")

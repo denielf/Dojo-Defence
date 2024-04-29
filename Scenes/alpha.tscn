@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://c5pkvlqvmxcj3"]
+[gd_scene load_steps=13 format=3 uid="uid://c5pkvlqvmxcj3"]
 
 [ext_resource type="Script" path="res://Scripts/camLerp.gd" id="1_b1net"]
 [ext_resource type="Script" path="res://Scripts/main.gd" id="1_rvlyx"]
@@ -24,6 +24,14 @@ noise = SubResource("FastNoiseLite_k1qcx")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7yxce"]
 albedo_texture = SubResource("NoiseTexture2D_uoy7e")
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_fhhbq"]
+size = Vector2(384, 192)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xooux"]
+transparency = 1
+blend_mode = 3
+albedo_color = Color(1, 1, 1, 0.0196078)
 
 [node name="Alpha" type="Node3D"]
 script = ExtResource("1_rvlyx")
@@ -57,4 +65,9 @@ script = ExtResource("1_wiw5t")
 [node name="roads" type="Node3D" parent="."]
 
 [node name="lod" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 100, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 40, 0)
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 192, 50, 96)
+mesh = SubResource("PlaneMesh_fhhbq")
+surface_material_override/0 = SubResource("StandardMaterial3D_xooux")
