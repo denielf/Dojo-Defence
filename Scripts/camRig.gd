@@ -5,21 +5,21 @@ extends Node3D
 
 @onready var viewSize = get_viewport().size
 @onready var lastPos = get_viewport().get_mouse_position()
-@onready var zoomTgt = 280
+@onready var zoomTgt = 140
 
 func _ready():
 	position.x = alpha.grid_width; position.z = alpha.grid_height
 
 func _process(delta):
-	zoomTgt = clamp(zoomTgt, 40, 280)
+	zoomTgt = clamp(zoomTgt, 20, 140)
 	camera.size = lerpf(camera.size, zoomTgt, 4 * delta)
 
 func _input(event):
 	if (event is InputEventMouseButton):
 		if (event.button_index == MOUSE_BUTTON_WHEEL_DOWN):
-			zoomTgt += 20.0
+			zoomTgt += 10.0
 		elif (event.button_index == MOUSE_BUTTON_WHEEL_UP):
-			zoomTgt -= 20.0
+			zoomTgt -= 10.0
 	if (event is InputEventMouseMotion):
 		if (Input.is_mouse_button_pressed(MOUSE_BUTTON_MIDDLE)):
 			var currMousePos = get_viewport().get_mouse_position()
@@ -29,8 +29,8 @@ func _input(event):
 				currMousePos.y = wrap(currMousePos.y, 0, viewSize.y)
 				get_viewport().warp_mouse(currMousePos)
 			else:
-				position.x += (currMousePos.x-lastPos.x)*remap(zoomTgt, 10, 240, 0.08, 1)
-				position.z += (currMousePos.y-lastPos.y)*remap(zoomTgt, 10, 240, 0.08, 1)
+				position.x += (currMousePos.x-lastPos.x)*remap(zoomTgt, 0, 200, 0.08, 1)
+				position.z += (currMousePos.y-lastPos.y)*remap(zoomTgt, 0, 200, 0.08, 1)
 			lastPos = currMousePos
 		else: lastPos = get_viewport().get_mouse_position()
 

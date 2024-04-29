@@ -1,0 +1,38 @@
+[gd_scene load_steps=7 format=3 uid="uid://dpvuyo2yyglyf"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_efhlu"]
+size = Vector2(3, 2)
+
+[sub_resource type="Gradient" id="Gradient_6603n"]
+colors = PackedColorArray(0.112355, 0.0462538, 0, 1, 0.905606, 0.571655, 0.412397, 1)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_vpt0x"]
+frequency = 0.0003
+offset = Vector3(217.39, 0, 0)
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_t6vdv"]
+width = 16
+height = 16
+seamless = true
+seamless_blend_skirt = 0.0
+color_ramp = SubResource("Gradient_6603n")
+noise = SubResource("FastNoiseLite_vpt0x")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_a0vyc"]
+albedo_texture = SubResource("NoiseTexture2D_t6vdv")
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_r43fl"]
+size = Vector2(3, 2)
+
+[node name="dojo" type="Node3D"]
+transform = Transform3D(1.54, 0, 0, 0, 1.54, 0, 0, 0, 1.54, 0, 0, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(-1.26, 0, 1.10153e-07, 0, 1.26, 0, -1.10153e-07, 0, -1.26, 0.584416, 1.25968, 0.584415)
+mesh = SubResource("PlaneMesh_efhlu")
+surface_material_override/0 = SubResource("StandardMaterial3D_a0vyc")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
+transform = Transform3D(-0.756, 0, 6.60916e-08, 0, 0.756, 0, -6.60916e-08, 0, -0.756, 0.584416, 1.88968, 0.584415)
+mesh = SubResource("PlaneMesh_r43fl")
+surface_material_override/0 = SubResource("StandardMaterial3D_a0vyc")

@@ -8,14 +8,14 @@ albedo_texture = ExtResource("2_od5xt")
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_tlhha"]
 bottom_radius = 1.0
-height = 12.0
+height = 7.0
 radial_segments = 4
 rings = 1
 cap_bottom = false
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_qopu7"]
 bottom_radius = 1.0
-height = 8.0
+height = 5.0
 radial_segments = 4
 rings = 1
 cap_bottom = false
@@ -34,13 +34,13 @@ script = ExtResource("1_4pna1")
 transform = Transform3D(1, 0, 0, 0, 0.99923, -0.0392395, 0, 0.0392395, 0.99923, 0, 0, 0)
 
 [node name="MeshInstance3D3" type="MeshInstance3D" parent="Node3D"]
-transform = Transform3D(0.000337839, 0.0153034, 1.01381, -0.00533423, 0.779839, -0.0198924, -1.01399, -0.00409738, 0.00044301, 0.492943, 4.84373, 0.823595)
+transform = Transform3D(0.000337839, 0.0153034, 1.01381, -0.00533423, 0.779839, -0.0198924, -1.01399, -0.00409736, 0.00044301, 0.492943, 2.84527, 0.902074)
 material_override = SubResource("StandardMaterial3D_pse4q")
 mesh = SubResource("CylinderMesh_tlhha")
 skeleton = NodePath("../..")
 
 [node name="MeshInstance3D5" type="MeshInstance3D" parent="Node3D"]
-transform = Transform3D(-0.50661, 0.0153034, 0.87815, 0.00532657, 0.779839, -0.0198944, -0.87836, -0.00409737, -0.50661, 1.74193, 3.02021, 1.08266)
+transform = Transform3D(-0.50661, 0.0153034, 0.87815, 0.00532657, 0.779839, -0.0198944, -0.87836, -0.00409736, -0.50661, 1.74193, 2.02098, 1.1219)
 material_override = SubResource("StandardMaterial3D_pse4q")
 mesh = SubResource("CylinderMesh_qopu7")
 skeleton = NodePath("../..")
