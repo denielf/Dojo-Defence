@@ -1,0 +1,26 @@
+[gd_scene load_steps=5 format=3 uid="uid://cdjtuskd02txg"]
+
+[ext_resource type="Texture2D" uid="uid://de5tabmf6dmql" path="res://Resources/treeNoise.tres" id="1_lckra"]
+[ext_resource type="Script" path="res://Scenes/wobble.gd" id="1_pwbaj"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_pse4q"]
+albedo_texture = ExtResource("1_lckra")
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_tlhha"]
+bottom_radius = 1.0
+height = 12.0
+radial_segments = 4
+rings = 1
+cap_bottom = false
+
+[node name="tree" type="Node3D"]
+script = ExtResource("1_pwbaj")
+
+[node name="Node3D" type="Node3D" parent="."]
+transform = Transform3D(0.999887, -0.0150376, 0, 0.0150376, 0.999887, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="Node3D"]
+transform = Transform3D(0.6084, 0, 1.05378, 0, 0.936, 0, -1.05378, 0, 0.6084, -0.522, 5.5, -0.286)
+material_override = SubResource("StandardMaterial3D_pse4q")
+mesh = SubResource("CylinderMesh_tlhha")
+skeleton = NodePath("../..")
