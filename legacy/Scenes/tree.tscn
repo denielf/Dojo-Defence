@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://cdjtuskd02txg"]
 
-[ext_resource type="Texture2D" uid="uid://de5tabmf6dmql" path="res://Resources/treeNoise.tres" id="1_lckra"]
-[ext_resource type="Script" path="res://Scenes/wobble.gd" id="1_pwbaj"]
+[ext_resource type="Texture2D" path="res://Resources/treeNoise.tres" id="1_lckra"]
+[ext_resource type="Script" path="res://legacy/Scenes/wobble.gd" id="1_pwbaj"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_pse4q"]
 albedo_texture = ExtResource("1_lckra")

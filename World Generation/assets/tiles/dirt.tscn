@@ -1,0 +1,13 @@
+[gd_scene load_steps=4 format=3 uid="uid://dffh168rqob2w"]
+
+[ext_resource type="Texture2D" uid="uid://blqss330xshl5" path="res://World Generation/assets/textures/dirt.png" id="1_ljbti"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_joef6"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3udu4"]
+albedo_texture = ExtResource("1_ljbti")
+
+[node name="dirt" type="MeshInstance3D"]
+transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, 0, 0, 0)
+mesh = SubResource("PlaneMesh_joef6")
+surface_material_override/0 = SubResource("StandardMaterial3D_3udu4")
