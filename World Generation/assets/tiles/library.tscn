@@ -1,0 +1,20 @@
+[gd_scene load_steps=5 format=3 uid="uid://bwpq6p63f6xct"]
+
+[ext_resource type="PackedScene" uid="uid://bbrjud6xfj6e8" path="res://World Generation/assets/tiles/covert.tscn" id="1_8ouvb"]
+[ext_resource type="PackedScene" uid="uid://dffh168rqob2w" path="res://World Generation/assets/tiles/dirt.tscn" id="2_h6iid"]
+[ext_resource type="PackedScene" uid="uid://bme2rx0yuqkhv" path="res://World Generation/assets/tiles/grass.tscn" id="3_13dgu"]
+[ext_resource type="PackedScene" uid="uid://clx6mj0yagh2w" path="res://World Generation/assets/tiles/water.tscn" id="4_tn1w4"]
+
+[node name="library" type="Node3D"]
+
+[node name="covert" parent="." instance=ExtResource("1_8ouvb")]
+transform = Transform3D(1, 1.06581e-14, 0, -1.06581e-14, 1, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="dirt" parent="." instance=ExtResource("2_h6iid")]
+transform = Transform3D(1, 1.06581e-14, 0, -1.06581e-14, 1, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="grass" parent="." instance=ExtResource("3_13dgu")]
+transform = Transform3D(1, 1.06581e-14, 0, -1.06581e-14, 1, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="water" parent="." instance=ExtResource("4_tn1w4")]
+transform = Transform3D(1, 1.06581e-14, 0, -1.06581e-14, 1, 0, 0, 0, 1, 0, 0, 0)
