@@ -1,11 +1,11 @@
 [gd_scene load_steps=3 format=3 uid="uid://bkgtvtephe38p"]
 
 [ext_resource type="ArrayMesh" uid="uid://bnu0gieo235h6" path="res://World Generation/assets/models/tree.obj" id="1_556yk"]
+[ext_resource type="Material" uid="uid://cpuucd0yxx51f" path="res://World Generation/assets/textures/trees2.tres" id="2_j8r4f"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_cxni4"]
-albedo_color = Color(0.72549, 0.745098, 0.415686, 1)
+[node name="Node3D" type="Node3D"]
 
-[node name="Tree" type="MeshInstance3D"]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0)
+[node name="Tree" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.866025, -0.5, -2.18557e-08, 0, -4.37114e-08, 1, -0.5, -0.866025, -3.78552e-08, 1.1, 0, 1)
 mesh = ExtResource("1_556yk")
-surface_material_override/0 = SubResource("StandardMaterial3D_cxni4")
+surface_material_override/0 = ExtResource("2_j8r4f")

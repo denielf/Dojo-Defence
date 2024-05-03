@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://fr64clfnbxhh"]
+
+[ext_resource type="ArrayMesh" uid="uid://bnu0gieo235h6" path="res://World Generation/assets/models/tree.obj" id="1_p23do"]
+[ext_resource type="Material" uid="uid://cpuucd0yxx51f" path="res://World Generation/assets/textures/trees2.tres" id="2_emn2m"]
+[ext_resource type="Material" uid="uid://d32602d60cy6b" path="res://World Generation/assets/textures/trees.tres" id="2_x261s"]
+
+[node name="Node3D" type="Node3D"]
+
+[node name="Tree" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.9, 0, 0, 0, -3.93403e-08, 0.9, 0, -0.9, -3.93403e-08, 0.261844, 0, 1.22832)
+mesh = ExtResource("1_p23do")
+surface_material_override/0 = ExtResource("2_emn2m")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Tree"]
+transform = Transform3D(0.772741, -0.207055, -9.05067e-09, 0.207055, 0.772741, -1.19154e-09, 9.05067e-09, -1.19154e-09, 0.8, 0.94118, 1.06593, 4.65931e-08)
+mesh = ExtResource("1_p23do")
+surface_material_override/0 = ExtResource("2_emn2m")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Tree"]
+transform = Transform3D(0.69282, 0.4, 1.74845e-08, -0.4, 0.69282, -4.68496e-09, -1.74845e-08, -4.68498e-09, 0.8, 1.35882, -0.365926, -1.59952e-08)
+mesh = ExtResource("1_p23do")
+surface_material_override/0 = ExtResource("2_x261s")

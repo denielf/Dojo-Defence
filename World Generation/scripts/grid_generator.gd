@@ -2,6 +2,10 @@
 
 extends GridMap
 
+const TREE = preload("res://World Generation/assets/tree.tscn")
+const TREES = preload("res://World Generation/assets/trees.tscn")
+const TREES_2 = preload("res://World Generation/assets/trees2.tscn")
+
 @export var generate : bool
 @export var delete : bool
 
@@ -10,21 +14,24 @@ extends GridMap
 
 @export var world_seed = 0
 
-@export_range(0.005, 0.1) var frequency = 0.05
+@export_range(0.005, 0.1) var frequency = 0.06
 
-@export_range(0, 1) var grass = 0.82
-@export_range(0, 1) var dirt = 0.5
-@export_range(0, 1) var covert = 0.48
+@export_range(0, 1) var grass = 0.55
+@export_range(0, 1) var dirt = 0.58
+@export_range(0, 1) var covert = 1.0
 
-const TREE = preload("res://World Generation/assets/tree.tscn")
-
-enum type {COVERT, DIRT, GRASS, WATER}
+enum type {COVERT, WATER, DIRT, GRASS, GRAVEL}
 
 var noise
 var rng
 
 var dojo_pos
 var road_edges = []
+
+func _input(event):
+	if event is InputEventKey:
+		if event.is_action_pressed("ui_accept"):
+			generate_world()
 
 func _process(delta):
 	
@@ -34,15 +41,16 @@ func _process(delta):
 		generate = false
 	if delete:
 		print("clearing grid...")
+		clear()
 		grid_clear()
 		delete = false
 
 func grid_clear():
-	clear()
 	for child in get_children():
 		child.queue_free()
 
 func generate_world():
+	clear()
 	grid_clear()
 	noise = FastNoiseLite.new()
 	rng = RandomNumberGenerator.new()
@@ -62,8 +70,8 @@ func generate_world():
 				set_cell_item(Vector3(x, 0, y), type.COVERT)
 			else:
 				set_cell_item(Vector3(x, 0, y), type.WATER)
-	
 	generate_road()
+	generate_trees()
 
 func distance(v3_1, v3_2):
 	var pos1 = Vector3(v3_1.x, v3_1.y, v3_1.z).distance_to(Vector3(v3_2.x, v3_2.y, v3_2.z))
@@ -107,11 +115,11 @@ func generate_road():
 	dojo_pos = choosen
 	#generate open area around dojo
 	for i in 5:
-		set_cell_item(choosen + Vector3i(i-2, 0, 3), type.DIRT)
-		set_cell_item(choosen + Vector3i(i-2, 0, -3), type.DIRT)
+		set_cell_item(choosen + Vector3i(i-2, 0, 3), type.GRAVEL)
+		set_cell_item(choosen + Vector3i(i-2, 0, -3), type.GRAVEL)
 	for k in 5:
 		for l in 7:
-			set_cell_item(choosen + Vector3i(l-3, 0, k-2), type.DIRT)
+			set_cell_item(choosen + Vector3i(l-3, 0, k-2), type.GRAVEL)
 	#
 	var edges = [Vector3i(rng.randi_range(20, grid_width-20), 0, grid_height-1), # top
 				 Vector3i(rng.randi_range(20, grid_width-20), 0, 0), # down
@@ -126,7 +134,7 @@ func generate_road():
 		sort.shuffle()
 		pop = sort.pop_front()
 		road_edges.append(pop)
-		set_cell_item(road_edges[e], type.DIRT)
+		set_cell_item(road_edges[e], type.GRAVEL)
 	
 	#generate roads
 	for edge in road_edges:
@@ -157,20 +165,40 @@ func generate_road():
 			sort.append(best1["coord"])
 			sort.append(best2["coord"])
 			current = sort.pick_random()
-			set_cell_item(current, type.DIRT)
+			set_cell_item(current, type.GRAVEL)
 			if stuck > 2000:
 				print("stuck")
 				break
 			stuck += 1
+
+func generate_trees():
+	for x in grid_width:
+		for y in grid_height:
+			if get_cell_item(Vector3(x, 0, y)) == type.COVERT:
+				if rng.randi_range(0, 5) > 0:
+					var new = TREES.instantiate()
+					new.position = Vector3(x * 2, 0, y * 2)
+					new.rotation_degrees.y = rng.randf_range(-45, 45)
+					add_child(new)
+				elif rng.randi_range(0, 2) > 1:
+					var new = TREES_2.instantiate()
+					new.position = Vector3(x * 2, 0, y * 2)
+					new.rotation_degrees.y = rng.randf_range(-45, 45)
+					add_child(new)
+				else:
+					var new = TREE.instantiate()
+					new.position = Vector3(x * 2, 0, y * 2)
+					new.rotation_degrees.y = rng.randf_range(-45, 45)
+					add_child(new)
 
 func cost(coord):
 	var type = get_cell_item(coord)
 	match type:
 		0: #forest
 			return(0.5)
-		1: #dirt 
+		2: #dirt 
 			return(0)
-		2: #grass
+		3: #grass
 			return(0)
 		_: #water
 			return(3)

@@ -4,11 +4,11 @@
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_joef6"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3udu4"]
-albedo_color = Color(0.958953, 0.9365, 0.786618, 1)
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3lp8o"]
+albedo_color = Color(0.960784, 0.835294, 0.639216, 1)
 albedo_texture = ExtResource("1_5c3bx")
 
 [node name="grass" type="MeshInstance3D"]
 transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, 0, 0, 0)
 mesh = SubResource("PlaneMesh_joef6")
-surface_material_override/0 = SubResource("StandardMaterial3D_3udu4")
+surface_material_override/0 = SubResource("StandardMaterial3D_3lp8o")
